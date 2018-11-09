@@ -6,13 +6,13 @@
 <meta charset="UTF-8">
 <title>Insert title here</title>
 
-<%@ include file="include/header.jsp" %>
+<%@ include file="../include/header.jsp" %>
 
 </head>
 <body>
 
-<%@ include file="include/menu.jsp" %>
-<h2>${message}</h2>
+<%@ include file="../include/menu.jsp" %>
+<h2>doE 페이지</h2>
 
 </body>
 </html>
