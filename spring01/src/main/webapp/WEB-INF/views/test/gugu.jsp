@@ -12,6 +12,7 @@
 <body>
 
 <%@ include file="../include/menu.jsp" %>
+<h2>구구단 계산 결과</h2>
 <h2>${result}</h2>
 
 </body>

@@ -6,6 +6,11 @@
 <meta charset="UTF-8">
 <title>Insert title here</title>
 
+<!--
+	json의 형식
+	{"변수명": "값", "변수명": "값"}
+	{name: "냉장고", price: 500000}
+ -->
 <%@ include file="include/header.jsp" %>
 <script>
 	function doF() {
@@ -30,6 +35,8 @@
 <a href="${path}/test/doB">doB</a><br>
 <a href="${path}/test/doC">doC</a><br>
 <a href="${path}/test/doD">doD</a><br>
+
+<!-- ajax로 호출하는 방법 -->
 <a href="#" onclick="doF()">doF</a><br>
 <div id="result"></div>
 
