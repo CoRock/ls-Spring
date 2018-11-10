@@ -14,15 +14,22 @@ import org.springframework.web.servlet.ModelAndView;
 
 import com.corock.spring01.model.dto.ProductDTO;
 
-@Controller	// 현재 클래스를 스프링에서 관리하는 컨트롤러 빈으로 등록함
+/**
+ * @Controller: Controller Annotation(컨트롤러 객체를 자동으로 생성)
+ * 	현재 클래스를 스프링에서 관리하는 컨트롤러 빈으로 등록함
+ * @RequestMapping: url mapping
+ */
+@Controller	// 
 public class MainController {
 	
-	// 로깅을 위한 변수
+	// 로그 객체 생성(로깅을 위한 변수)
 	private static final Logger logger = LoggerFactory.getLogger(MainController.class);
 	
-	@RequestMapping("/")		// url mapping
+	@RequestMapping("/")
 	public String main(Model model) {
 		// Model에 자료 저장(서블릿의 request 객체에 해당됨)
+		// Model: 데이터를 담는 그릇 역할, map 구조로 저장됨
+		// model.addAttribute("변수명", 값)
 		model.addAttribute("message", "홈페이지 방문을 환영합니다.");
 
 		return "main";		// /WEB-INF/views/main.jsp로 포워딩됨
@@ -106,10 +113,10 @@ public class MainController {
 	 * doF(): 뷰를 리턴하는 것이 아닌 데이터 자체를 리턴할 경우 
 	 * @ResponseBody: dto를 json으로 변환
 	 */
-	@ResponseBody
-	@RequestMapping("test/doF")
-	public ProductDTO doF() {
-		return new ProductDTO("냉장고", 500000);
-	}
+//	@ResponseBody
+//	@RequestMapping("test/doF")
+//	public ProductDTO doF() {
+//		return new ProductDTO("냉장고", 500000);
+//	}
 
 }
