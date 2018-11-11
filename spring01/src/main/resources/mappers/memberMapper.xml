@@ -9,4 +9,9 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 		SELECT * FROM Member
 		ORDER BY name
 	</select>
+	
+	<insert id="insertMember">
+		INSERT INTO Member (userid, passwd, name, email)
+		VALUES (#{userid}, #{passwd}, #{name}, #{email})
+	</insert>
 </mapper>
