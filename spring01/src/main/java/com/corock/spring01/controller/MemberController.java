@@ -1,5 +1,6 @@
 package com.corock.spring01.controller;
 
+import java.util.Date;
 import java.util.List;
 
 import javax.inject.Inject;
@@ -9,7 +10,6 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 
-import com.corock.spring01.model.dao.MemberDAO;
 import com.corock.spring01.model.dto.MemberDTO;
 import com.corock.spring01.service.MemberService;
 
@@ -55,6 +55,49 @@ public class MemberController {
 		// memberDao.insertMember(dto);
 		
 		return "redirect:/member/list.do";
+	}
+	
+	/**
+	 * @RequestParam: request.getParameter("변수명") 대체
+	 */
+	@RequestMapping("member/view.do")
+	public String view(String userid, Model model) {
+		// 모델에 자료 저장
+		model.addAttribute("dto", memberService.viewMember(userid));
+		// view.jsp로 포워딩
+		return "member/view";
+	}
+	
+	@RequestMapping("member/update.do")
+	public String update(MemberDTO dto, Model model) {
+		// 비밀번호 체크
+		boolean result = memberService.checkPw(dto.getUserid(), dto.getPasswd());
+		
+		if (result) {		// 비밀번호가 맞으면
+			// 회원정보 수정
+			memberService.updateMember(dto);
+			// 수정 후 목록으로 이동
+			return "redirect:/member/list.do";
+		} else {			// 비밀번호가 틀리면
+			model.addAttribute("dto", dto);
+			model.addAttribute("join_date", memberService.viewMember(dto.getUserid()).getJoin_date());
+			model.addAttribute("message", "비밀번호를 입력하세요.");
+			return "member/view";
+		}
+	}
+	
+	@RequestMapping("member/delete.do")
+	public String delete(String userid, String passwd, Model model) {
+		boolean result = memberService.checkPw(userid, passwd);
+		
+		if (result) {		// 비밀번호가 맞으면 삭제 => 목록으로 이동
+			memberService.deleteMember(userid);
+			return "redirect:/member/list.do";
+		} else {			// 비밀번호가 틀리면 되돌아감
+			model.addAttribute("message", "비밀번호를 확인하세요.");
+			model.addAttribute("dto", memberService.viewMember(userid));
+			return "member/view";
+		}
 	}
 	
 }

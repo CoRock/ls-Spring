@@ -14,4 +14,27 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 		INSERT INTO Member (userid, passwd, name, email)
 		VALUES (#{userid}, #{passwd}, #{name}, #{email})
 	</insert>
+	
+	<select id="viewMember" resultType="memberDto">
+		SELECT * FROM Member
+		WHERE userid = #{userid}
+	</select>
+	
+	<update id="updateMember">
+		UPDATE Member
+		SET passwd = #{passwd}, name = #{name}, email = #{email}
+		WHERE userid = #{userid}
+	</update>
+	
+	<!-- 비밀번호 체크 -->
+	<select id="checkPw" resultType="int">
+		SELECT COUNT(*) FROM Member
+		WHERE userid = #{userid} AND passwd = ${passwd}
+	</select>
+	
+	<delete id="deleteMember">
+		DELETE FROM Member
+		WHERE userid = #{userid}
+	</delete>
+	
 </mapper>
