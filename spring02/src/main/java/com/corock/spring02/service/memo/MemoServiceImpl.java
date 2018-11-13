@@ -27,8 +27,7 @@ public class MemoServiceImpl implements MemoService {
 
 	@Override
 	public MemoDTO memo_view(int idx) {
-		// TODO Auto-generated method stub
-		return null;
+		return memoDao.memo_view(idx);
 	}
 
 	@Override

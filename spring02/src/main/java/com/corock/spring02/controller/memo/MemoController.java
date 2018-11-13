@@ -5,8 +5,8 @@ import java.util.List;
 import javax.inject.Inject;
 
 import org.springframework.stereotype.Controller;
-import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.ModelAttribute;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.servlet.ModelAndView;
 
@@ -39,6 +39,15 @@ public class MemoController {
 	public String insert(@ModelAttribute MemoDTO dto) {
 		memoService.insert(dto);
 		return "redirect:/memo/list.do";
+	}
+	
+	// 글 번호가 PathVariable로 url에 포함되어 전달됨
+	@RequestMapping("view/{idx}")
+	public ModelAndView view(@PathVariable int idx, ModelAndView mav) {
+		mav.setViewName("memo/view");								// 포워딩할 뷰의 이름
+		mav.addObject("dto", memoService.memo_view(idx));	// 전달할 데이터
+		
+		return mav;
 	}
 		
 	// http://localhost/spring02/memo/update.do

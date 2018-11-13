@@ -17,6 +17,8 @@ public interface MemoDAO {
 	@Insert("INSERT INTO Memo (idx, writer, memo)" +
 				"VALUES ( (SELECT NVL(MAX(idx) + 1, 1) FROM Memo), #{writer}, #{memo} )")	
 	public void insert(@Param("writer") String writer, @Param("memo") String memo);
-			
+	
+	@Select("SELECT * FROM Memo WHERE idx = #{idx}")
+	public MemoDTO memo_view(@Param("idx") int idx);
 	
 }

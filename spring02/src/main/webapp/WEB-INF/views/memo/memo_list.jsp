@@ -7,6 +7,11 @@
 <title>Insert title here</title>
 
 <%@ include file="../include/header.jsp" %>
+<script>
+	function memo_view(idx) {
+		location.href="${path}/memo/view/" + idx;
+	}
+</script>
 
 </head>
 <body>
@@ -30,7 +35,7 @@
 	<tr>
 		<td>${row.idx}</td>
 		<td>${row.writer}</td>
-		<td>${row.memo}</td>
+		<td><a href="#" onclick="memo_view('${row.idx}')">${row.memo}</a></td>
 		<td><fmt:formatDate value="${row.post_date}" pattern="yyyy-MM-dd HH:mm:ss" /></td>
 	</tr>
 </c:forEach>
