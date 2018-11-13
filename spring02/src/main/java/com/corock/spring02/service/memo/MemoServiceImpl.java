@@ -22,8 +22,7 @@ public class MemoServiceImpl implements MemoService {
 
 	@Override
 	public void insert(MemoDTO dto) {
-		// TODO Auto-generated method stub
-		
+		memoDao.insert(dto.getWriter(), dto.getMemo());
 	}
 
 	@Override

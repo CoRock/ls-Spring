@@ -13,6 +13,12 @@
 
 <%@ include file="../include/menu.jsp" %>
 <h2>메모장</h2>
+<form method="post" action="${path}/memo/insert.do">
+	이름: <input name="writer" size="10"><br>
+	메모: <input name="memo" size="40">
+	<input type="submit" value="확인">
+</form>
+
 <table border="1" width="500px">
 	<tr>
 		<th>번호</th>
