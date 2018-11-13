@@ -5,6 +5,7 @@ import java.util.List;
 import org.apache.ibatis.annotations.Insert;
 import org.apache.ibatis.annotations.Param;
 import org.apache.ibatis.annotations.Select;
+import org.apache.ibatis.annotations.Update;
 
 import com.corock.spring02.model.memo.dto.MemoDTO;
 
@@ -20,5 +21,10 @@ public interface MemoDAO {
 	
 	@Select("SELECT * FROM Memo WHERE idx = #{idx}")
 	public MemoDTO memo_view(@Param("idx") int idx);
+	
+	@Update("UPDATE Memo SET writer = #{writer}, memo = #{memo}" +
+				 "WHERE idx = #{idx}")
+	public void update(MemoDTO dto);
+	// public void update(@Param("writer") String writer, @Param("memo") String memo, @Param("idx") int idx);	
 	
 }

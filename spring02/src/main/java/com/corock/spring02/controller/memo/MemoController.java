@@ -49,6 +49,12 @@ public class MemoController {
 		
 		return mav;
 	}
+	
+	@RequestMapping("update/{idx}")
+	public String update(@PathVariable int idx, @ModelAttribute MemoDTO dto) {
+		memoService.update(dto);				// 메모 수정
+		return "redirect:/memo/list.do";		// 수정 완료 후 목록으로 이동
+	}
 		
 	// http://localhost/spring02/memo/update.do
 	

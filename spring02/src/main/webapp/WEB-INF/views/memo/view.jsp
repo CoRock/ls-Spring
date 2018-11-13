@@ -7,6 +7,14 @@
 <title>Insert title here</title>
 
 <%@ include file="../include/header.jsp" %>
+<script type="text/javascript">
+	$(function() {
+		$("#btnUpdate").click(function() {
+			document.form1.action="${path}/memo/update/${dto.idx}";
+			document.form1.submit();
+		});
+	});
+</script>
 
 </head>
 <body>

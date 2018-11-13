@@ -32,8 +32,7 @@ public class MemoServiceImpl implements MemoService {
 
 	@Override
 	public void update(MemoDTO dto) {
-		// TODO Auto-generated method stub
-		
+		memoDao.update(dto);
 	}
 
 	@Override
