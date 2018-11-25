@@ -37,8 +37,7 @@ public class MemoServiceImpl implements MemoService {
 
 	@Override
 	public void delete(int idx) {
-		// TODO Auto-generated method stub
-		
+		memoDao.delete(idx);
 	}
 
 }

@@ -2,6 +2,7 @@ package com.corock.spring02.model.memo.dao;
 
 import java.util.List;
 
+import org.apache.ibatis.annotations.Delete;
 import org.apache.ibatis.annotations.Insert;
 import org.apache.ibatis.annotations.Param;
 import org.apache.ibatis.annotations.Select;
@@ -25,6 +26,9 @@ public interface MemoDAO {
 	@Update("UPDATE Memo SET writer = #{writer}, memo = #{memo}" +
 				 "WHERE idx = #{idx}")
 	public void update(MemoDTO dto);
-	// public void update(@Param("writer") String writer, @Param("memo") String memo, @Param("idx") int idx);	
+	// public void update(@Param("writer") String writer, @Param("memo") String memo, @Param("idx") int idx);
+	
+	@Delete("DELETE FROM Memo WHERE idx = #{idx}")
+	public void delete(@Param("idx") int idx);
 	
 }

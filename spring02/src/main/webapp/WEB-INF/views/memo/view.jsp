@@ -13,6 +13,12 @@
 			document.form1.action="${path}/memo/update/${dto.idx}";
 			document.form1.submit();
 		});
+		$("#btnDelete").click(function() {
+			if (confirm("삭제하시겠습니까?")) {
+				document.form1.action="${path}/memo/delete/${dto.idx}";
+				document.form1.submit();
+			}
+		});
 	});
 </script>
 
